@@ -27,19 +27,23 @@ public class BackgroundLoader : MonoBehaviour
         TextMeshProUGUI p1Score = GameObject.Find("P1Score").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI p2Score = GameObject.Find("P2Score").GetComponent<TextMeshProUGUI>();
         
+        
         if (bgRenderer != null)
         {
             bgRenderer.sprite = bg.BackgroundSprite;
         }
+        
         if (ballRenderer != null)
         {
             ballRenderer.sprite = bg.BallSprite;
             ballRenderer.color = bg.BallColor;  
         }
+        
         if (Camera.main != null)
         {
             Camera.main.backgroundColor = bg.BackgroundColor;
         }
+        
         if (title != null)
         {
             title.color = bg.TitleColor;

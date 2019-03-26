@@ -7,7 +7,6 @@ public class BallPhysics : MonoBehaviour
     public float _acceleration = 0.002f;
     public float _gravity = -0.0003f;
     
-    
     private float _ballSpeed;
     private bool _waiting;
     
@@ -34,6 +33,7 @@ public class BallPhysics : MonoBehaviour
         _waiting = true;
     }
 
+    // ReSharper disable once UnusedParameter.Local
     private void OnCollisionEnter2D(Collision2D other)
     {
         _waiting = false;

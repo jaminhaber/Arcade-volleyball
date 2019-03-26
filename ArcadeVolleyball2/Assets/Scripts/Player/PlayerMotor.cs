@@ -27,7 +27,7 @@ public class PlayerMotor : MonoBehaviour
 		if (_jump)
 		{
 //			_jumpAxis = Settings.s.PlayerJumpSpeed;
-			_jumpAxis = 8;
+			_jumpAxis = 10;
 			_jump = false;
 		}
 		

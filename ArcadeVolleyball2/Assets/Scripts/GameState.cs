@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class GameState : MonoBehaviour
 {
     public StateEvent OnStateChange;
-
+    
     public State CurrentState { get; private set; }
 
     private void Awake()
@@ -16,8 +16,8 @@ public class GameState : MonoBehaviour
 
     public void UpdateState(State state)
     {
-        CurrentState = state;
         OnStateChange.Invoke(state);
+        CurrentState = state;
     }
 
 }
