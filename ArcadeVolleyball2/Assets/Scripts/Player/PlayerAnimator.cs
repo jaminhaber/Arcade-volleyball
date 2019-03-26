@@ -31,7 +31,7 @@ public class PlayerAnimator : MonoBehaviour
 			_walkFrame = ++_walkFrame%Sprites.Walking.Length;
 		}
 
-		_renderer.sprite = _motor.IsGrounded ?  Sprites.Walking[_walkFrame]: Sprites.Jump;
+		_renderer.sprite = _motor.IsGrounded ? Sprites.Walking[_walkFrame] : Sprites.Jump;
 		
 	}
 }

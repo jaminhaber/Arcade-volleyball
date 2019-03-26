@@ -8,10 +8,10 @@ public class ImportSettings : AssetPostprocessor
      *beshken was here XD love u ben
      */
 
-    private readonly int _bgUnits = 16;
-    private readonly int _ballUnits = 1;
-    private readonly int _guyUnits = 2;
-    private readonly int _ppu = 32;
+    private readonly float _bgUnits = 16;
+    private readonly float _ballUnits = 1.6f;
+    private readonly float _guyUnits = 2;
+    private readonly float _ppu = 32;
 
     private void OnPreprocessTexture()
     {
