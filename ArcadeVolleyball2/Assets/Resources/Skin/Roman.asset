@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed9a4df4f59944c8935f19768ae5e03, type: 3}
+  m_Name: Roman
+  m_EditorClassIdentifier: 
+  Name: Roman
+  Locked: 0
+  BackgroundSprite: {fileID: 21300000, guid: 29e4b6e1e05cb4e30a128bc59f04a808, type: 3}
+  BackgroundColor: {r: 0.63999647, g: 0.75413996, b: 0.9622642, a: 1}
+  BallSprite: {fileID: 21300000, guid: 729960c663d6942ab951c04654488973, type: 3}
+  BallColor: {r: 1, g: 1, b: 1, a: 1}
+  TitleColor: {r: 0, g: 0, b: 0, a: 1}
+  ScoreColor: {r: 0, g: 0, b: 0, a: 1}
+  UiColor: {r: 1, g: 1, b: 1, a: 1}

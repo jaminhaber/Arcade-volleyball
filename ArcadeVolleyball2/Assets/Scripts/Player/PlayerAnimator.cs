@@ -16,6 +16,7 @@ public class PlayerAnimator : MonoBehaviour
 	{
 		_motor = GetComponentInParent<PlayerMotor>();
 		_renderer = GetComponent<SpriteRenderer>();
+		if (transform.position.x > 0) _renderer.flipX = true;
 	}
 
 	public void SetColor(Color color)

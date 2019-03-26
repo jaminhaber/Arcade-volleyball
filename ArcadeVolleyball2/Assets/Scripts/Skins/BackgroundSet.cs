@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Background")]
 public class BackgroundSet : ScriptableObject
 {
     [Header("General")]
     public string Name;
-	
+    public Boolean Locked;
+    
     [Header("Background")]
     public Sprite BackgroundSprite;
     public Color BackgroundColor = Color.black;

@@ -12,7 +12,8 @@ public class PlayerMotor : MonoBehaviour
 	private bool _jump;
 	private Rigidbody2D _rb2D;
 
-
+	private readonly float groundLevel = -6;
+	
 	private void Start ()
 	{
 		_rb2D = GetComponent<Rigidbody2D>();
@@ -60,7 +61,7 @@ public class PlayerMotor : MonoBehaviour
 	
 	private bool Grounded()
 	{
-		return transform.position.y < -4;
+		return transform.position.y < groundLevel;
 	}
 	
 	public bool Walking()
