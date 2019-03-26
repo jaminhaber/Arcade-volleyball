@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed9a4df4f59944c8935f19768ae5e03, type: 3}
   m_Name: Mono
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Mono
   BackgroundSprite: {fileID: 21300000, guid: c02ac28fe19ca4567a03fd1274f8ea32, type: 3}
   BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   BallSprite: {fileID: 21300000, guid: 107c1d55fd2424e889e2bb665eb88fa4, type: 3}

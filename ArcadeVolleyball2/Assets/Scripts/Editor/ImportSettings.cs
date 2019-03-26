@@ -8,8 +8,10 @@ public class ImportSettings : AssetPostprocessor
      *beshken was here XD love u ben
      */
 
-    bool postProcess;
-    int ppu = 32;
+    private readonly int _bgUnits = 16;
+    private readonly int _ballUnits = 1;
+    private readonly int _guyUnits = 2;
+    private readonly int _ppu = 32;
 
     private void OnPreprocessTexture()
     {
@@ -17,42 +19,53 @@ public class ImportSettings : AssetPostprocessor
 
         TextureImporter ti = (TextureImporter) assetImporter;
         ti.textureType = TextureImporterType.Sprite;
-        ti.spritePixelsPerUnit = ppu;
         ti.mipmapEnabled = false;
         ti.filterMode = FilterMode.Point;
-
-        if (assetPath.Contains("guy"))
-        {
-            ti.spriteImportMode = SpriteImportMode.Multiple;
-            postProcess = true;
-        }
-        else
-        {
-            ti.spriteImportMode = SpriteImportMode.Single;
-            postProcess = false;
-        }
     }
 
     private void OnPostprocessTexture(Texture2D texture)
     {
-        if (!postProcess) return;
         
         string fileName = System.IO.Path.GetFileNameWithoutExtension(assetPath);
-        int spriteSize = texture.height;
-        
-        var metas = new List<SpriteMetaData>();
-
-
-        for (int c = 0; c < texture.width/texture.height; c++)
-        {
-            SpriteMetaData meta = new SpriteMetaData();
-            meta.rect = new Rect(c * spriteSize, 0, spriteSize, spriteSize);
-            meta.name = fileName + "_" + c;
-            metas.Add(meta);
-        }
+        int height = texture.height;
         
         TextureImporter textureImporter = (TextureImporter)assetImporter;
-        textureImporter.spritePixelsPerUnit = spriteSize / 2;
-        textureImporter.spritesheet = metas.ToArray();
+
+        if (fileName.Contains("ball"))
+        {
+            textureImporter.spriteImportMode = SpriteImportMode.Single;
+            textureImporter.spritePixelsPerUnit = height / _ballUnits;
+        }
+        else if (fileName.Contains("background"))
+        {
+            textureImporter.spriteImportMode = SpriteImportMode.Single;
+            textureImporter.spritePixelsPerUnit = height / _bgUnits;
+        }
+        else if (fileName.Contains("guy"))
+        {
+            textureImporter.spriteImportMode = SpriteImportMode.Multiple;
+            textureImporter.spritePixelsPerUnit = height / _guyUnits;
+        
+            var metas = new List<SpriteMetaData>();
+
+            for (int c = 0; c < texture.width/texture.height; c++)
+            {
+                SpriteMetaData meta = new SpriteMetaData
+                {
+                    rect = new Rect(c * height, 0, height, height), 
+                    name = fileName + "_" + c,
+                    alignment = (int)SpriteAlignment.BottomCenter
+                };
+                metas.Add(meta);
+            }
+        
+            textureImporter.spritesheet = metas.ToArray();
+        }
+        else
+        {
+            textureImporter.spriteImportMode = SpriteImportMode.Single;
+            textureImporter.spritePixelsPerUnit = _ppu;
+        }
+      
     }
 }
