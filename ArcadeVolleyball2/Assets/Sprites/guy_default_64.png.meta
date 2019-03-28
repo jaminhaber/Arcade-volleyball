@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 24d3f07ce14704e2fbf04aed10574f8e
+guid: 8bb87c86b67f940208cf61295609303c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: guy_0
-    21300002: guy_1
-    21300004: guy_2
+    21300000: guy_default_64_0
+    21300002: guy_default_64_1
+    21300004: guy_default_64_2
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -72,33 +72,11 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: guy_0
+      name: guy_default_64_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +96,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guy_1
+      name: guy_default_64_1
       rect:
         serializedVersion: 2
         x: 64
@@ -138,7 +116,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guy_2
+      name: guy_default_64_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,7 +138,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1dde0b71a0a7c470591c90fa3745f4f3
     vertices: []
     indices: 
     edges: []

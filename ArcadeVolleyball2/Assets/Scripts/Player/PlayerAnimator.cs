@@ -16,7 +16,6 @@ public class PlayerAnimator : MonoBehaviour
 	{
 		_motor = GetComponentInParent<PlayerMotor>();
 		_renderer = GetComponent<SpriteRenderer>();
-		if (transform.position.x > 0) _renderer.flipX = true;
 	}
 
 	public void SetColor(Color color)
@@ -35,12 +34,4 @@ public class PlayerAnimator : MonoBehaviour
 		_renderer.sprite = _motor.IsGrounded ? Sprites.Walking[_walkFrame] : Sprites.Jump;
 		
 	}
-}
-
-[CreateAssetMenu(menuName = "Sprite Set")]
-public class SpriteSet : ScriptableObject
-{
-	public int FramesPerSprite = 12;
-	public Sprite[] Walking;
-	public Sprite Jump;
 }

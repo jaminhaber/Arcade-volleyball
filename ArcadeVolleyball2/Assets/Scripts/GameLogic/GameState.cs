@@ -19,13 +19,20 @@ public class GameState : MonoBehaviour
         OnStateChange.Invoke(state);
         CurrentState = state;
     }
+    
+    public void UpdateState(Action<State> func)
+    {
+        func(CurrentState);
+        OnStateChange.Invoke(CurrentState);
+    }
 
 }
 
 [Serializable] public class StateEvent : UnityEvent<State> {}
 
-public struct State
+public class State
 {
+    
     public int p1score;
     public int p2score;
     

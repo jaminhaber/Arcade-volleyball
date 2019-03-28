@@ -1,5 +1,9 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Object = UnityEngine.Object;
+// ReSharper disable Unity.PerformanceCriticalCodeInvocation
 
 public class BackgroundLoader : MonoBehaviour
 {
@@ -9,7 +13,7 @@ public class BackgroundLoader : MonoBehaviour
     private void Awake()
     {
         backgrounds = Resources.LoadAll<BackgroundSet>("Skin");
-        Debug.Log("Loaded "+backgrounds.Length+" backgrounds");
+        Debug.Log("Loaded " + backgrounds.Length + " backgrounds");
     }
 
     private void Update()
@@ -19,39 +23,44 @@ public class BackgroundLoader : MonoBehaviour
         LoadBackground(backgrounds[current]);
     }
 
+
     private static void LoadBackground(BackgroundSet bg)
     {
-        SpriteRenderer ballRenderer = GameObject.Find("Ball").GetComponent<SpriteRenderer>();
-        SpriteRenderer bgRenderer = GameObject.Find("Background").GetComponent<SpriteRenderer>();
-        TextMeshProUGUI title = GameObject.Find("Title").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI p1Score = GameObject.Find("P1Score").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI p2Score = GameObject.Find("P2Score").GetComponent<TextMeshProUGUI>();
-        
-        
-        if (bgRenderer != null)
-        {
-            bgRenderer.sprite = bg.BackgroundSprite;
-        }
-        
-        if (ballRenderer != null)
-        {
-            ballRenderer.sprite = bg.BallSprite;
-            ballRenderer.color = bg.BallColor;  
-        }
-        
         if (Camera.main != null)
-        {
             Camera.main.backgroundColor = bg.BackgroundColor;
-        }
-        
-        if (title != null)
-        {
-            title.color = bg.TitleColor;
-        }
 
-        if (p1Score != null && p2Score!=null)
+        TryUpdate<TextMeshProUGUI>("Title", t => { t.color = bg.TitleColor; });
+        TryUpdate<TextMeshProUGUI>("P1Score", t => { t.color = bg.ScoreColor; });
+        TryUpdate<TextMeshProUGUI>("P2Score", t => { t.color = bg.ScoreColor; });
+        TryUpdate<SpriteRenderer>("Background", s => { s.sprite = bg.BackgroundSprite; });
+        TryUpdate<SpriteRenderer>("Ball", s =>
         {
-            p1Score.color = p2Score.color = bg.ScoreColor;
+            s.sprite = bg.BallSprite;
+            s.color = bg.BallColor;
+        });
+        TryUpdate<Button>(null, t =>
+        {
+            t.GetComponent<Image>().color = bg.UiColor;
+            t.GetComponentInChildren<Text>().color = bg.ScoreColor;
+        });
+    }
+
+    private static void TryUpdate<T>(string name, Action<T> func) where T : Object
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            T[] all = FindObjectsOfType<T>();
+            foreach (T t in all)
+                func(t);
+        }
+        else
+        {
+            GameObject obj;
+            T type;
+            
+            if ((obj = GameObject.Find(name)) != null
+                && (type = obj.GetComponent<T>()) != null)
+                func(type);
         }
     }
 }

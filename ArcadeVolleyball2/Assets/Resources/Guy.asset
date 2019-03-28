@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Guy
   m_EditorClassIdentifier: Assembly-CSharp::SpriteSet
-  FramesPerSprite: 24
+  FramesPerSprite: 12
   Walking:
-  - {fileID: 21300002, guid: 24d3f07ce14704e2fbf04aed10574f8e, type: 3}
-  - {fileID: 21300004, guid: 24d3f07ce14704e2fbf04aed10574f8e, type: 3}
-  Jump: {fileID: 21300000, guid: 24d3f07ce14704e2fbf04aed10574f8e, type: 3}
+  - {fileID: 21300002, guid: 8bb87c86b67f940208cf61295609303c, type: 3}
+  - {fileID: 21300004, guid: 8bb87c86b67f940208cf61295609303c, type: 3}
+  Jump: {fileID: 21300000, guid: 8bb87c86b67f940208cf61295609303c, type: 3}

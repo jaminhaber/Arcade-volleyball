@@ -12,14 +12,16 @@ public class PlayerMotor : MonoBehaviour
 	private bool _jump;
 	private Rigidbody2D _rb2D;
 
-	private readonly float groundLevel = -6;
-	
+	private const float GroundLevel = -6;
+
 	private void Start ()
 	{
 		_rb2D = GetComponent<Rigidbody2D>();
 		IsGrounded = true;
+		if (transform.position.x > 0f)
+			transform.rotation = Quaternion.Euler(new Vector3(0,180));
 	}
-	
+
 	private void FixedUpdate () 
 	{
 		_jumpAxis = _rb2D.velocity.y;
@@ -61,7 +63,7 @@ public class PlayerMotor : MonoBehaviour
 	
 	private bool Grounded()
 	{
-		return transform.position.y < groundLevel;
+		return transform.position.y <= GroundLevel;
 	}
 	
 	public bool Walking()
