@@ -2,8 +2,6 @@
 
 public class PlayerController : MonoBehaviour
 {
-	[Header("Settings")]
-	[SerializeField] private bool Player1;
 	
 	private PlayerMotor _motor;
 	private string _moveAxis = "Horizontal";
@@ -13,8 +11,8 @@ public class PlayerController : MonoBehaviour
 	private void Start ()
 	{
 		_motor = GetComponent<PlayerMotor>();
-		_moveAxis = Player1 ? "P1Move" : "P2Move";
-		_jumpAxis = Player1 ? "P1Jump" : "P2Jump";
+		_moveAxis = transform.position.x < 0 ? "P1Move" : "P2Move";
+		_jumpAxis = transform.position.x < 0 ? "P1Jump" : "P2Jump";
 		_defaultPosition = transform.position;
 	}
 

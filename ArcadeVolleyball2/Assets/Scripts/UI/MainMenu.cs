@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -8,7 +7,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        startGame.onClick.AddListener(() => { SceneManager.LoadScene("VolleyBall"); });
+        startGame.onClick.AddListener(Loader.i.LoadGame);
     }
 
 }

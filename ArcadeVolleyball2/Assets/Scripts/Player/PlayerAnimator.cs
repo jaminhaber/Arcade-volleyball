@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Skins;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerAnimator : MonoBehaviour
