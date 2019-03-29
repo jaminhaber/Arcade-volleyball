@@ -13,7 +13,6 @@ public class BackgroundLoader : MonoBehaviour
     private void Awake()
     {
         backgrounds = Resources.LoadAll<BackgroundSet>("Skin");
-        Debug.Log("Loaded " + backgrounds.Length + " backgrounds");
     }
 
     private void Start()

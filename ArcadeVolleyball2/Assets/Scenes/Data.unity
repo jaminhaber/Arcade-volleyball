@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: {fileID: 0}
+  settings: {fileID: 0}
   background: 0
   loadingScreen: {fileID: 320706177}
 --- !u!4 &624088822
@@ -369,6 +370,7 @@ GameObject:
   - component: {fileID: 1704844823}
   - component: {fileID: 1704844825}
   - component: {fileID: 1704844824}
+  - component: {fileID: 1704844826}
   m_Layer: 5
   m_Name: Loading
   m_TagString: Untagged
@@ -519,3 +521,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704844822}
   m_CullTransparentMesh: 0
+--- !u!114 &1704844826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704844822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b416781bc20d24788ae81ca5532f56ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitBetweenDots: 0.5
