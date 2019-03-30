@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Skins;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,13 +44,13 @@ public class BackgroundLoader : MonoBehaviour
             s.sprite = bg.BallSprite;
             s.color = bg.BallColor;
         });
+        
         TryUpdate<Image>("UI", i => i.color = bg.UiColor);
         TryUpdate<TextMeshProUGUI>("Loading", t => t.color = bg.TitleColor);
-        TryUpdate<Button>(null, t =>
-        {
-            t.GetComponent<Image>().color = bg.UiColor;
-            t.GetComponentInChildren<Text>().color = bg.ScoreColor;
-        });
+
+        
+        foreach (ISkin s in FindObjectsOfType<MonoBehaviour>().OfType<ISkin>()) 
+            s.Paint(bg);
     }
 
     private static void TryUpdate<T>(string name, Action<T> func) where T : Object

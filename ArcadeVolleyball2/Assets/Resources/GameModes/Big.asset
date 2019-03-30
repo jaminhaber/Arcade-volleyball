@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89dce4265771e43248263dc444ecc7ef, type: 3}
-  m_Name: Quick
+  m_Name: Big
   m_EditorClassIdentifier: 
-  modeName: Quick
-  description: A quick game
+  modeName: Big Guys
+  description: Big guys
   winScore: 3
   bestOf: 3
   maxTouches: 3
-  BallSpeed: 6
-  BallGravity: 2
-  BallAcceleration: 2
+  BallSpeed: 10
+  ballGravity: 2
+  ballAcceleration: 3
   PlayerSpeed: 8
   PlayerJumpSpeed: 10
-  CharacterSize: 1
+  CharacterSize: 3
   playersPerSide: 2

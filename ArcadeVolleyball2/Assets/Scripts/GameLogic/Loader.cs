@@ -8,11 +8,10 @@ public class Loader : MonoBehaviour
 
     public GameMode mode;
     public GameSettings settings;
-    public int background;
     
+    [HideInInspector] public int background;
     [SerializeField] private CanvasGroup loadingScreen;
-
-    private const float loadTime = 3f;
+    [SerializeField] private float loadTime = 3f;
     
     private void Awake()
     {

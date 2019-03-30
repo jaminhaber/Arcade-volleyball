@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Ball;
+using TMPro;
 using UnityEngine;
 
 public class InfoView : MonoBehaviour
@@ -6,15 +7,25 @@ public class InfoView : MonoBehaviour
  
     [SerializeField] private TextMeshProUGUI text;
 
+    [SerializeField] private BallPhysics ball;
+
+    private string _stateInfo;
+    private string _ballInfo;
+    
     private void Start()
     {
         GameManager.i.GameState.OnStateChange.AddListener(DisplayUpdate);
-
     }
 
-    private void DisplayUpdate(State state)
+    private void Update()
     {
-        text.text = $"Touches: {state.p1touch} - {state.p2touch}";
+        _ballInfo = ball.DebugInfo();
+        text.text = $"{_stateInfo}\n{_ballInfo}";
+    }
+
+    private void DisplayUpdate(State state, State o)
+    {
+        _stateInfo = $"Touches: {state.p1touch} - {state.p2touch}";
     }
 }
 

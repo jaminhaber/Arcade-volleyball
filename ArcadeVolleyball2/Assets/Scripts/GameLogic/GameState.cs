@@ -1,38 +1,37 @@
 ﻿using System;
-using UnityEngine;
 using UnityEngine.Events;
 
-public class GameState : MonoBehaviour
+public class GameState 
 {
-    public StateEvent OnStateChange;
+    public readonly StateUpdateEvent OnStateChange;
     
-    public State CurrentState { get; private set; }
+    public State lastState { get; private set; }
+    private readonly State CurrentState;
 
-    private void Awake()
+    public GameState()
     {
-        OnStateChange = new StateEvent();
+        OnStateChange = new StateUpdateEvent();
         CurrentState = new State();
-    }
-
-    public void UpdateState(State state)
-    {
-        OnStateChange.Invoke(state);
-        CurrentState = state;
     }
     
     public void UpdateState(Action<State> func)
     {
+        lastState = new State(CurrentState);
         func(CurrentState);
-        OnStateChange.Invoke(CurrentState);
+        OnStateChange.Invoke(CurrentState,lastState);
     }
 
 }
 
 [Serializable] public class StateEvent : UnityEvent<State> {}
 
+[Serializable]
+public class StateUpdateEvent : UnityEvent<State, State> {}
+
+
 public class State
 {
-    
+
     public int p1score;
     public int p2score;
     
@@ -42,4 +41,18 @@ public class State
     public int p1touch;
     public int p2touch;
 
+    public State()
+    {
+    }
+
+    public State(State s)
+    {
+        p1score = s.p1score;
+        p2score = s.p2score;
+        p1wins = s.p1wins;
+        p2wins = s.p2wins;
+        p1touch = s.p1touch;
+        p2touch = s.p2touch;
+    }
+    
 }

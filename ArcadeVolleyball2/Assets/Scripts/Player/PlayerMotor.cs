@@ -12,12 +12,17 @@ public class PlayerMotor : MonoBehaviour
 	private bool _jump;
 	private Rigidbody2D _rb2D;
 
-	private const float GroundLevel = -6;
+	private readonly float _groundLevel = Loader.i.settings.GroundLevel;
+	private readonly float _moveSpeed = Loader.i.mode.PlayerSpeed; 
+	private readonly float _jumpSpeed = Loader.i.mode.PlayerJumpSpeed;
 
 	private void Start ()
 	{
 		_rb2D = GetComponent<Rigidbody2D>();
 		IsGrounded = true;
+		
+		transform.localScale = transform.localScale * Loader.i.mode.CharacterSize;
+
 		if (transform.position.x > 0f)
 			transform.rotation = Quaternion.Euler(new Vector3(0,180));
 	}
@@ -28,13 +33,11 @@ public class PlayerMotor : MonoBehaviour
 
 		if (_jump)
 		{
-//			_jumpAxis = Settings.s.PlayerJumpSpeed;
-			_jumpAxis = 10;
+			_jumpAxis = _jumpSpeed;
 			_jump = false;
 		}
 		
-//		_rb2D.velocity = new Vector2(_move * Settings.s.PlayerSpeed, _jumpAxis);
-		_rb2D.velocity = new Vector2(_move * 8, _jumpAxis);
+		_rb2D.velocity = new Vector2(_move * _moveSpeed, _jumpAxis);
 
 	}
 
@@ -63,7 +66,7 @@ public class PlayerMotor : MonoBehaviour
 	
 	private bool Grounded()
 	{
-		return transform.position.y <= GroundLevel;
+		return transform.position.y <= _groundLevel;
 	}
 	
 	public bool Walking()

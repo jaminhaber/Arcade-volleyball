@@ -12,7 +12,7 @@ public class ScoreUpdater : MonoBehaviour
         GameManager.i.GameState.OnStateChange.AddListener(ScoreUpdate);
     }
 
-    private void ScoreUpdate(State state)
+    private void ScoreUpdate(State state,State old)
     {
         p1.text = state.p1score.ToString("D2");
         p2.text = state.p2score.ToString("D2");

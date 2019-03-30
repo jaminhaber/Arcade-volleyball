@@ -9,18 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89dce4265771e43248263dc444ecc7ef, type: 3}
-  m_Name: Quick
+  m_Script: {fileID: 11500000, guid: 0998e91d957984abe84781a2e268f69c, type: 3}
+  m_Name: DefaultSettings
   m_EditorClassIdentifier: 
-  modeName: Quick
-  description: A quick game
-  winScore: 3
-  bestOf: 3
-  maxTouches: 3
   BallSpeed: 6
   BallGravity: 2
   BallAcceleration: 2
   PlayerSpeed: 8
   PlayerJumpSpeed: 10
-  CharacterSize: 1
-  playersPerSide: 2
+  GroundLevel: -6
+  CharacterSize: 1.2
+  Effects: 1
+  WaitAfterScore: 1
+  WaitAfterWin: 3

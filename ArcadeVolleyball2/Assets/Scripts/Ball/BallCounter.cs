@@ -1,31 +1,34 @@
 ﻿using System;
 using UnityEngine;
 
-public class BallCounter : MonoBehaviour
+namespace Ball
 {
-    private GameObject lastCollision;
-
-    private void OnCollisionEnter2D(Collision2D other)
+    public class BallCounter : MonoBehaviour
     {
-        if (other.gameObject == lastCollision) return;
+        private GameObject lastCollision;
 
-        if (other.gameObject.CompareTag("Ground"))
-            LR(s => s.p2score++, s => s.p1score++);
-
-        if (other.gameObject.CompareTag("Player"))
-            LR(s => { s.p1touch++; }, s => { s.p2touch++; });
-
-        LR(s => s.p2touch = 0, s => s.p1touch = 0);
-
-        lastCollision = other.gameObject;
-    }
-
-    private void LR(Action<State> left, Action<State> right)
-    {
-        GameManager.i.GameState.UpdateState(s =>
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (transform.position.x < 0) left(s);
-            else right(s);
-        });
+            if (other.gameObject == lastCollision) return;
+
+            if (other.gameObject.CompareTag("Ground"))
+                LR(s => s.p2score++, s => s.p1score++);
+
+            if (other.gameObject.CompareTag("Player"))
+                LR(s => { s.p1touch++; }, s => { s.p2touch++; });
+
+            LR(s => s.p2touch = 0, s => s.p1touch = 0);
+
+            lastCollision = other.gameObject;
+        }
+
+        private void LR(Action<State> left, Action<State> right)
+        {
+            GameManager.i.GameState.UpdateState(s =>
+            {
+                if (transform.position.x < 0) left(s);
+                else right(s);
+            });
+        }
     }
 }

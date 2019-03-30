@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 22723120}
   - component: {fileID: 22723122}
   - component: {fileID: 22723124}
-  - component: {fileID: 22723123}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -170,22 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0359ec9c99a044122b2a6566621e9959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &22723123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22723119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ba4ea61c23914aa8a5a2e9d24f4a309, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnStateChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: StateEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &22723124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6f8412be8a041d9b1e3563145863b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameState: {fileID: 22723123}
+  ball: {fileID: 777664227}
 --- !u!1 &72394102
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,6 +786,7 @@ GameObject:
   - component: {fileID: 777664226}
   - component: {fileID: 777664221}
   - component: {fileID: 777664222}
+  - component: {fileID: 777664227}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -859,9 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6531db2f5a4484bbd2ce2e540c6c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6
-  _acceleration: 0.002
-  _gravity: -0.0003
 --- !u!212 &777664224
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -935,6 +916,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 450fe1d9639e64784b67e7158c744d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &777664227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777664220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d24870ca64dc4cf7a6d8772c46a736a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &782064969
@@ -1050,6 +1043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1571400683}
+  ball: {fileID: 777664223}
 --- !u!1 &903280018
 GameObject:
   m_ObjectHideFlags: 0

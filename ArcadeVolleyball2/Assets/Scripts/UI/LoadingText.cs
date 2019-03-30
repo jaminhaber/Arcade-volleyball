@@ -7,7 +7,7 @@ public class LoadingText : MonoBehaviour
     private TextMeshProUGUI text;
     private string st;
 
-    [SerializeField] private float waitBetweenDots = .5f;
+    [SerializeField] private float waitBetweenDots = .4f;
 
     private void Start()
     {
