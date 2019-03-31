@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Ball;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager i;
 
     public GameState GameState;
-    public BallLogic ball;
-    
+
     private void Awake()
     {
         if (i == null) i = this;
@@ -21,7 +20,7 @@ public class GameManager : MonoBehaviour
         GameState.OnStateChange.AddListener(OnStateUpdate);
     }
 
-    private void OnStateUpdate(State n,State o)
+    private void OnStateUpdate(State n, State o)
     {
         if (n.p1score > o.p1score)
             StartCoroutine(n.p1score >= Loader.i.mode.winScore ? WinRoutine() : ScoreRoutine());
@@ -40,7 +39,7 @@ public class GameManager : MonoBehaviour
             s.p1score = s.p2score = 0;
         });
         Time.timeScale = 1;
-//        Loader.i.LoadMenu();
+        NewRound();
     }
 
     private IEnumerator ScoreRoutine()
@@ -48,6 +47,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(Loader.i.settings.WaitAfterScore);
         Time.timeScale = 1;
+    }
+
+    private void NewRound()
+    {
+        foreach (IReset s in FindObjectsOfType<MonoBehaviour>().OfType<IReset>())
+            s.ResetForNewRound();
     }
 
 

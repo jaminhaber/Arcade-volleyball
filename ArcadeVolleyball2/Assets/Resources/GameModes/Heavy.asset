@@ -10,18 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89dce4265771e43248263dc444ecc7ef, type: 3}
-  m_Name: Tournament
+  m_Name: Heavy
   m_EditorClassIdentifier: 
-  modeName: Tournament
-  description: 
-  winScore: 5
+  modeName: Heavy Ball
+  description: This thing made of rocks?
+  winScore: 3
   bestOf: 3
   maxTouches: 3
   BallSpeed: 6
-  ballGravity: 2
+  ballGravity: 6
   ballAcceleration: 2
-  PlayerSpeed: 8
-  PlayerJumpSpeed: 10
+  PlayerSpeed: 6
+  PlayerJumpSpeed: 14
   CharacterSize: 1
   playersPerSide: 2
-  serveMode: 0

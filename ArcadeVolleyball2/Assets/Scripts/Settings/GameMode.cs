@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "GameMode")]
 public class GameMode : ScriptableObject
@@ -24,5 +25,10 @@ public class GameMode : ScriptableObject
     
     [Header("Game Settings")]
     [Range(1, 3)] public int playersPerSide = 2;
-	
+	public ServeMode serveMode;
+}
+
+public enum ServeMode
+{
+	WINNER,LOSER,ALTERNATING
 }

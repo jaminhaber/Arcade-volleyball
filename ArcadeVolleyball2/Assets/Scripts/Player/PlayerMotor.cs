@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMotor : MonoBehaviour
+public class PlayerMotor : MonoBehaviour, IReset
 {
 	
 	public bool IsGrounded { get; private set; }
@@ -16,10 +16,17 @@ public class PlayerMotor : MonoBehaviour
 	private readonly float _moveSpeed = Loader.i.mode.PlayerSpeed; 
 	private readonly float _jumpSpeed = Loader.i.mode.PlayerJumpSpeed;
 
+	private Vector2 _startPosition; 
+	
 	private void Start ()
 	{
 		_rb2D = GetComponent<Rigidbody2D>();
 		IsGrounded = true;
+		
+		_startPosition = 
+			new Vector2(transform.position.x,Loader.i.settings.GroundLevel + Loader.i.mode.CharacterSize/2);
+		
+		ResetForNewRound();
 		
 		transform.localScale = transform.localScale * Loader.i.mode.CharacterSize;
 
@@ -72,5 +79,15 @@ public class PlayerMotor : MonoBehaviour
 	public bool Walking()
 	{
 		return _move != 0f;
+	}
+
+	public void ResetForNewRound()
+	{
+		transform.position = _startPosition;
+	}
+
+	public void ResetForNewGame()
+	{
+		ResetForNewRound();
 	}
 }

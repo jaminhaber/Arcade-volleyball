@@ -9,6 +9,8 @@ namespace Ball
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            LR(s => s.p2touch = 0, s => s.p1touch = 0);
+
             if (other.gameObject == lastCollision) return;
 
             if (other.gameObject.CompareTag("Ground"))
@@ -17,7 +19,6 @@ namespace Ball
             if (other.gameObject.CompareTag("Player"))
                 LR(s => { s.p1touch++; }, s => { s.p2touch++; });
 
-            LR(s => s.p2touch = 0, s => s.p1touch = 0);
 
             lastCollision = other.gameObject;
         }

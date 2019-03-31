@@ -20,7 +20,7 @@ public class InfoView : MonoBehaviour
     private void Update()
     {
         _ballInfo = ball.DebugInfo();
-        text.text = $"{_stateInfo}\n{_ballInfo}";
+        text.text = $"Mode: {Loader.i.mode.modeName}\n{_stateInfo}\n{_ballInfo}";
     }
 
     private void DisplayUpdate(State state, State o)

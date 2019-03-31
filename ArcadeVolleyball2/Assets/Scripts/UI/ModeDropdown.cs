@@ -10,16 +10,26 @@ public class ModeDropdown : MonoBehaviour, ISkin
 
     [SerializeField] private TMP_Dropdown _dropdown;
 
+    private GameMode[] modes;
     private void Start()
     {
-        _dropdown.options = GetOptions();
+        _dropdown.ClearOptions();
+        _dropdown.AddOptions(GetOptions());
+        _dropdown.onValueChanged.AddListener(onChoiceMade);
     }
+
+    private void onChoiceMade(int v)
+    {
+        Loader.i.mode = modes[v];
+        Debug.Log(v);
+    }
+    
 
     private List<TMP_Dropdown.OptionData> GetOptions()
     {
-        GameMode[] modes = Resources.LoadAll<GameMode>("GameModes");
+        modes = Resources.LoadAll<GameMode>("GameModes");
         
-        return modes.Select(mode => new TMP_Dropdown.OptionData(mode.name)).ToList();
+        return modes.Select(mode => new TMP_Dropdown.OptionData(mode.modeName)).ToList();
     }
 
 
