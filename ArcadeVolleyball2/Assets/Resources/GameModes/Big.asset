@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89dce4265771e43248263dc444ecc7ef, type: 3}
   m_Name: Big
   m_EditorClassIdentifier: 
-  modeName: Big Guys
+  modeName: Big Mode
   description: Big guys
   winScore: 3
   bestOf: 3
@@ -24,3 +24,4 @@ MonoBehaviour:
   PlayerJumpSpeed: 10
   CharacterSize: 3
   playersPerSide: 2
+  serveMode: 0

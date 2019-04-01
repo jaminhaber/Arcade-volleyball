@@ -18,8 +18,8 @@ public class GameIntro : MonoBehaviour, IReset
     private void Start()
     {
         _midPosition = _canvas.transform.position.x;
-        _startPosition = _midPosition + Screen.width;
-        _endPosition = _midPosition - Screen.width;
+        _startPosition = _midPosition + 20;
+        _endPosition = _midPosition - 20;
         ResetForNewRound();
     }
  
@@ -33,8 +33,8 @@ public class GameIntro : MonoBehaviour, IReset
         _canvas.transform.DOMoveX(_midPosition, EaseTime).SetEase(Ease.OutQuart).OnComplete(() =>
             _canvas.transform.DOMoveX(_endPosition, EaseTime).SetEase(Ease.InQuart));
 
-        _volley.transform.DOLocalMoveX(100, EaseTime * 2);
-        _gameMode.transform.DOLocalMoveX(-100, EaseTime * 2);
+        _volley.transform.DOLocalMoveX(50, EaseTime * 2);
+        _gameMode.transform.DOLocalMoveX(-50, EaseTime * 2);
 
     }
 

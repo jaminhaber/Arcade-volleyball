@@ -99,9 +99,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.31, y: 1.18}
+  m_Offset: {x: -0.29, y: 1.27}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.6
 --- !u!58 &4108717755781166431
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -115,9 +115,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16, y: 1.18}
+  m_Offset: {x: 0.18, y: 1.21}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.55
 --- !u!61 &6249660874428058686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09, y: 0.68}
+  m_Offset: {x: -0.05, y: 0.69}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -189,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c07dde93e01d4cc4acd6aa3a4d8d1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: 1
 --- !u!114 &1564195817111675470
 MonoBehaviour:
   m_ObjectHideFlags: 0

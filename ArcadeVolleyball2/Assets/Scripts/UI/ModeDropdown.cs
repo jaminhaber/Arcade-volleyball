@@ -16,6 +16,7 @@ public class ModeDropdown : MonoBehaviour, ISkin
         _dropdown.ClearOptions();
         _dropdown.AddOptions(GetOptions());
         _dropdown.onValueChanged.AddListener(onChoiceMade);
+        Loader.i.mode = modes[_dropdown.value];
     }
 
     private void onChoiceMade(int v)

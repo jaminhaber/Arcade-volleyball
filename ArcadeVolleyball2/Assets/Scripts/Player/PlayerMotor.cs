@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Ball;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -24,7 +25,7 @@ public class PlayerMotor : MonoBehaviour, IReset
 		IsGrounded = true;
 		
 		_startPosition = 
-			new Vector2(transform.position.x,Loader.i.settings.GroundLevel + Loader.i.mode.CharacterSize/2);
+			new Vector2(transform.position.x,Loader.i.settings.GroundLevel);
 		
 		ResetForNewRound();
 		
