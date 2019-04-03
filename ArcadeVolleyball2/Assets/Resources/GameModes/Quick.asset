@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Quick
   m_EditorClassIdentifier: 
   modeName: Quick
-  description: A quick game
+  description: First to 3 wins
   winScore: 3
-  bestOf: 3
+  bestOf: 1
   maxTouches: 3
   BallSpeed: 6
-  BallGravity: 2
-  BallAcceleration: 2
+  ballGravity: 2
+  ballAcceleration: 2
   PlayerSpeed: 8
   PlayerJumpSpeed: 10
   CharacterSize: 1
   playersPerSide: 2
+  serveMode: 1

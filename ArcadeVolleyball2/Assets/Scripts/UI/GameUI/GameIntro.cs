@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameIntro : MonoBehaviour, IReset, ISkin
 {
     [SerializeField] private TextMeshProUGUI _gameMode;
+    [SerializeField] private TextMeshProUGUI _info;
+
     [SerializeField] private RectTransform _rect;
 
     private const float EaseTime = 1.6f;
@@ -18,20 +20,23 @@ public class GameIntro : MonoBehaviour, IReset, ISkin
     private void Start()
     {
         _midPosition = _rect.transform.position.x;
-        _startPosition = _midPosition + 20;
-        _endPosition = _midPosition - 20;
+        _startPosition = _midPosition + 25;
+        _endPosition = _midPosition - 25;
         ResetForNewRound();
     }
 
     public void ResetForNewRound()
     {
+        InitCanvasMove();
         _gameMode.text = Loader.i.mode.modeName;
-        
-        _gameMode.transform.localPosition = _gameMode.transform.localPosition + new Vector3(100, 0);
+        _info.text = $"{GameManager.i.GameState.CurrentState.p1wins} - {GameManager.i.GameState.CurrentState.p2wins}";
+    }
 
+    private void InitCanvasMove()
+    {
         _rect.transform.position = new Vector3(_startPosition, _rect.transform.position.y);
         _rect.DOMoveX(_midPosition, EaseTime).SetEase(Ease.OutQuart).OnComplete(() =>
-            _rect.DOMoveX(_endPosition, EaseTime).SetEase(Ease.InQuart)
+            _rect.DOMoveX(_endPosition, EaseTime).SetEase(Ease.InQuart).OnComplete(()=>{})
         );
     }
 
@@ -43,5 +48,6 @@ public class GameIntro : MonoBehaviour, IReset, ISkin
     public void Paint(BackgroundSet s)
     {
         _gameMode.color = s.TitleColor;
+        _info.color = s.TitleColor;
     }
 }

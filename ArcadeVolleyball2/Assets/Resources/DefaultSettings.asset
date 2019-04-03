@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0998e91d957984abe84781a2e268f69c, type: 3}
   m_Name: DefaultSettings
   m_EditorClassIdentifier: 
-  BallSpeed: 6
-  BallGravity: 2
-  BallAcceleration: 2
-  PlayerSpeed: 8
-  PlayerJumpSpeed: 10
+  Effects: 0
   GroundLevel: -6
-  CharacterSize: 1.2
-  Effects: 1
   WaitAfterScore: 1
   WaitAfterWin: 3

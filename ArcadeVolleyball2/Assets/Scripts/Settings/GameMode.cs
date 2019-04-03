@@ -11,7 +11,7 @@ public class GameMode : ScriptableObject
     [Header("Score Settings")]
     [Range(1, 7)] public int winScore = 5;
     [Range(1, 5)] public int bestOf = 3;
-    [Range(1, 3)] public int maxTouches = 3;
+    [Range(1, 10)] public int maxTouches = 3;
 
     [Header("Ball Settings")] 
     public float BallSpeed = 6f;
@@ -24,11 +24,16 @@ public class GameMode : ScriptableObject
     public float CharacterSize = 1f;
     
     [Header("Game Settings")]
-    [Range(1, 3)] public int playersPerSide = 2;
-	public ServeMode serveMode;
+    public GameType playersPerSide = GameType.Solo;
+	public ServeMode serveMode = ServeMode.Winner;
 }
 
 public enum ServeMode
 {
-	WINNER,LOSER,ALTERNATING
+	Winner,Loser,Alternate
+}
+
+public enum GameType
+{
+	Solo,Duo
 }

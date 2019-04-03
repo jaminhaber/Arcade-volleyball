@@ -4,14 +4,15 @@ using UnityEngine.Events;
 public class GameState 
 {
     public readonly StateUpdateEvent OnStateChange;
-    
-    public State lastState { get; private set; }
-    private readonly State CurrentState;
+
+    private State lastState;
+    public readonly State CurrentState;
 
     public GameState()
     {
         OnStateChange = new StateUpdateEvent();
         CurrentState = new State();
+        lastState = CurrentState;
     }
     
     public void UpdateState(Action<State> func)

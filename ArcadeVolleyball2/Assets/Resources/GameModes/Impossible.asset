@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89dce4265771e43248263dc444ecc7ef, type: 3}
-  m_Name: Big
+  m_Name: Impossible
   m_EditorClassIdentifier: 
-  modeName: Big Mode
-  description: Big characters and a fast ball
-  winScore: 3
-  bestOf: 3
+  modeName: Impossibru
+  description: Good luck. You'll need it.
+  winScore: 7
+  bestOf: 1
   maxTouches: 3
-  BallSpeed: 10
-  ballGravity: 2
+  BallSpeed: 12
+  ballGravity: 0
   ballAcceleration: 3
-  PlayerSpeed: 8
+  PlayerSpeed: 10
   PlayerJumpSpeed: 10
-  CharacterSize: 3
+  CharacterSize: 0.5
   playersPerSide: 0
-  serveMode: 2
+  serveMode: 0

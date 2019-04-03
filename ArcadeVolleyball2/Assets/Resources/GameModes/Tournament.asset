@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Tournament
   m_EditorClassIdentifier: 
   modeName: Tournament
-  description: 
+  description: First to 5, best of 3
   winScore: 5
   bestOf: 3
   maxTouches: 3
-  BallSpeed: 6
+  BallSpeed: 5
   ballGravity: 2
   ballAcceleration: 2
   PlayerSpeed: 8
