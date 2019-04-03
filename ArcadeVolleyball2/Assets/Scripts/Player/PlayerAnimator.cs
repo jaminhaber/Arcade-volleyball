@@ -18,11 +18,6 @@ public class PlayerAnimator : MonoBehaviour
 		_motor = GetComponentInParent<PlayerMotor>();
 		_renderer = GetComponent<SpriteRenderer>();
 	}
-
-	public void SetColor(Color color)
-	{
-		_renderer.color = color;
-	}
 	
 	private void Update()
 	{

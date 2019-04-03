@@ -16,12 +16,16 @@ public class ModeDropdown : MonoBehaviour, ISkin
         _dropdown.ClearOptions();
         _dropdown.AddOptions(GetOptions());
         _dropdown.onValueChanged.AddListener(onChoiceMade);
+
+        _dropdown.value = PlayerPrefs.GetInt("mode", 0);
         Loader.i.mode = modes[_dropdown.value];
+        _dropdown.RefreshShownValue();
     }
 
     private void onChoiceMade(int v)
     {
         Loader.i.mode = modes[v];
+        PlayerPrefs.SetInt("mode",v);
         Debug.Log(v);
     }
     
@@ -29,7 +33,6 @@ public class ModeDropdown : MonoBehaviour, ISkin
     private List<TMP_Dropdown.OptionData> GetOptions()
     {
         modes = Resources.LoadAll<GameMode>("GameModes");
-        
         return modes.Select(mode => new TMP_Dropdown.OptionData(mode.modeName)).ToList();
     }
 

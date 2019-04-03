@@ -10,25 +10,29 @@ using Object = UnityEngine.Object;
 
 public class BackgroundLoader : MonoBehaviour
 {
-    private BackgroundSet[] backgrounds;
+    private static BackgroundSet[] backgrounds;
+    private static int current;
 
-    private void Awake()
-    {
-        backgrounds = Resources.LoadAll<BackgroundSet>("Skin");
-    }
-
+    public static BackgroundSet CurrentBackground => backgrounds[current];
+    
     private void Start()
     {
-        LoadBackground(backgrounds[Loader.i.background]);
+        backgrounds = Resources.LoadAll<BackgroundSet>("Skin");
+        current = PlayerPrefs.GetInt("background");
+        LoadBackground(backgrounds[current]);
     }
 
     private void Update()
     {
         if (!Input.GetButtonDown("Submit")) return;
-        Loader.i.background = ++Loader.i.background % backgrounds.Length;
-        LoadBackground(backgrounds[Loader.i.background]);
+        current = ++current % backgrounds.Length;
+        LoadBackground(backgrounds[current]);
     }
 
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("background",current);
+    }
 
     private static void LoadBackground(BackgroundSet bg)
     {

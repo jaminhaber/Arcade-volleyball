@@ -9,9 +9,8 @@ public class Loader : MonoBehaviour
     public GameMode mode;
     public GameSettings settings;
     
-    [HideInInspector] public int background;
     [SerializeField] private CanvasGroup loadingScreen;
-    [SerializeField] private float loadTime = 3f;
+    [SerializeField] private float loadTime = 1f;
     
     private void Awake()
     {
@@ -35,11 +34,13 @@ public class Loader : MonoBehaviour
     private IEnumerator Loading(string to,string from)
     {
         loadingScreen.alpha = 1;
+        loadingScreen.blocksRaycasts = true;
         AsyncOperation op = SceneManager.UnloadSceneAsync(from);
         yield return new WaitUntil(() => op.isDone);
         yield return new WaitForSeconds(loadTime);
         op = SceneManager.LoadSceneAsync(to, LoadSceneMode.Additive);
         yield return new WaitUntil(() => op.isDone);
         loadingScreen.alpha = 0;
+        loadingScreen.blocksRaycasts = false;
     }
 }
