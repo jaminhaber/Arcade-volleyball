@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ed9a4df4f59944c8935f19768ae5e03, type: 3}
-  m_Name: Mono
+  m_Name: Basketball
   m_EditorClassIdentifier: 
-  Name: Mono
+  Name: Atari Basketball
   Locked: 0
-  BackgroundSprite: {fileID: 21300000, guid: 2ac32966fa82b44f99e61c1fac3ebfed, type: 3}
+  BackgroundSprite: {fileID: 21300000, guid: e15c8c24fb0704b728822927d40dbab5, type: 3}
   BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  BallSprite: {fileID: 21300000, guid: 4a90a1d8966124bd68882cf0182d61f3, type: 3}
+  BallSprite: {fileID: 21300000, guid: 18864570a147a4bb782f30130d72f25f, type: 3}
   BallColor: {r: 1, g: 1, b: 1, a: 1}
-  TitleColor: {r: 1, g: 1, b: 1, a: 1}
-  ScoreColor: {r: 1, g: 1, b: 1, a: 1}
-  UiColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+  TitleColor: {r: 0.9803922, g: 0.57254905, b: 0.5764706, a: 1}
+  ScoreColor: {r: 0.10196079, g: 0.13333334, b: 0.6431373, a: 1}
+  UiColor: {r: 0.42352945, g: 0.6156863, b: 0.2784314, a: 1}

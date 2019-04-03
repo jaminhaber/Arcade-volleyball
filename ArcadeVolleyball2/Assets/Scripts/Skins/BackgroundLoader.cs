@@ -14,11 +14,19 @@ public class BackgroundLoader : MonoBehaviour
     private static int current;
 
     public static BackgroundSet CurrentBackground => backgrounds[current];
-    
+
+    private static BackgroundLoader i;
     private void Start()
     {
+        if (i == null) i = this;
+        else
+        {
+            LoadBackground(CurrentBackground);
+            enabled = false;
+        }
         backgrounds = Resources.LoadAll<BackgroundSet>("Skin");
         current = PlayerPrefs.GetInt("background");
+        if (current > backgrounds.Length) current = 0;
         LoadBackground(backgrounds[current]);
     }
 
@@ -26,7 +34,7 @@ public class BackgroundLoader : MonoBehaviour
     {
         if (!Input.GetButtonDown("Submit")) return;
         current = ++current % backgrounds.Length;
-        LoadBackground(backgrounds[current]);
+        LoadBackground(CurrentBackground);
     }
 
     private void OnDestroy()

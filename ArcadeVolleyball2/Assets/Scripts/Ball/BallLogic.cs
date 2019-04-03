@@ -4,22 +4,22 @@ using UnityEngine;
 
 namespace Ball
 {
-    public class BallLogic : MonoBehaviour, IReset
+    public class BallLogic : MonoBehaviour
     {
         private BallPhysics _ball;
-        private readonly float _waitAfterScore = Loader.i.settings.WaitAfterScore;
-
         private Func<State, State, bool> _serveFunc;
-        private int _winScore;
+        private bool _nextServe;
 
+        private readonly int _winScore = Loader.i.mode.winScore;
+        
         private void Start()
         {
-            _winScore = Loader.i.mode.winScore;
             _ball = GetComponent<BallPhysics>();
-            _ball.Serve(GameCalculator.ServePosition(true));
             _serveFunc = GameCalculator.ServeFunction(Loader.i.mode.serveMode);
-            
+            _nextServe = _serveFunc(new State(),GameManager.i.GameState.CurrentState );
+
             GameManager.i.GameState.OnStateChange.AddListener(OnStateChange);
+            GameManager.i.OnNewRound.AddListener(Init);
         }
 
         private void OnStateChange(State n, State o)
@@ -27,26 +27,13 @@ namespace Ball
             if (n.p1score >= _winScore || n.p2score >= _winScore) return;
 
             if (n.p1score != o.p1score || n.p2score != o.p2score)
-                StartCoroutine(
-                    Serve(GameCalculator.ServePosition(
-                        _serveFunc(n,o))));
+                _nextServe = _serveFunc(n, o);
         }
         
-        private IEnumerator Serve(Vector2 location)
+        private void Init()
         {
-            yield return new WaitForSecondsRealtime(_waitAfterScore);
-            _ball.Serve(location);
+            _ball.Serve(GameCalculator.ServePosition(_nextServe));
         }
 
-        public void ResetForNewRound()
-        {
-            StopAllCoroutines();
-            Start();
-        }
-
-        public void ResetForNewGame()
-        {
-            ResetForNewRound();
-        }
     }
 }

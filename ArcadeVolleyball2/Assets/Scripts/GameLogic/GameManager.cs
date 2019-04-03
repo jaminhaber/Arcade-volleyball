@@ -1,23 +1,32 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager i;
 
     public GameState GameState;
-
+    public UnityEvent OnNewRound { get; private set; }
+    public UnityEvent OnNewGame { get; private set; }
+    
     private void Awake()
     {
         if (i == null) i = this;
         else Destroy(gameObject);
+        
         GameState = new GameState();
+        OnNewRound = new UnityEvent();
+        OnNewGame = new UnityEvent();
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         GameState.OnStateChange.AddListener(OnStateUpdate);
+        yield return new WaitForEndOfFrame();
+        OnNewRound.Invoke();
+        OnNewGame.Invoke();
     }
 
     private void OnStateUpdate(State n, State o)
@@ -39,7 +48,9 @@ public class GameManager : MonoBehaviour
             s.p1score = s.p2score = 0;
         });
         Time.timeScale = 1;
-        NewRound();
+        
+        OnNewGame.Invoke();
+        OnNewRound.Invoke();
     }
 
     private IEnumerator ScoreRoutine()
@@ -47,14 +58,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(Loader.i.settings.WaitAfterScore);
         Time.timeScale = 1;
+        OnNewRound.Invoke();
     }
-
-    private void NewRound()
-    {
-        foreach (IReset s in FindObjectsOfType<MonoBehaviour>().OfType<IReset>())
-            s.ResetForNewRound();
-    }
-
 
     private void Update()
     {

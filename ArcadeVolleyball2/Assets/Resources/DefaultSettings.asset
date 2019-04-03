@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0998e91d957984abe84781a2e268f69c, type: 3}
   m_Name: DefaultSettings
   m_EditorClassIdentifier: 
-  Effects: 0
+  Effects: 1
   GroundLevel: -6
   WaitAfterScore: 1
   WaitAfterWin: 3

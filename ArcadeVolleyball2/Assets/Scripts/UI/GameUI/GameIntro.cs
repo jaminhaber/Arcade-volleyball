@@ -3,7 +3,7 @@ using Skins;
 using TMPro;
 using UnityEngine;
 
-public class GameIntro : MonoBehaviour, IReset, ISkin
+public class GameIntro : MonoBehaviour, ISkin
 {
     [SerializeField] private TextMeshProUGUI _gameMode;
     [SerializeField] private TextMeshProUGUI _info;
@@ -16,16 +16,16 @@ public class GameIntro : MonoBehaviour, IReset, ISkin
     private float _midPosition;
     private float _endPosition;
 
-
     private void Start()
     {
         _midPosition = _rect.transform.position.x;
         _startPosition = _midPosition + 25;
         _endPosition = _midPosition - 25;
-        ResetForNewRound();
+        
+        GameManager.i.OnNewGame.AddListener(DoIntro);
     }
 
-    public void ResetForNewRound()
+    private void DoIntro()
     {
         InitCanvasMove();
         _gameMode.text = Loader.i.mode.modeName;
@@ -40,14 +40,9 @@ public class GameIntro : MonoBehaviour, IReset, ISkin
         );
     }
 
-    public void ResetForNewGame()
-    {
-        ResetForNewRound();
-    }
-
     public void Paint(BackgroundSet s)
     {
-        _gameMode.color = s.TitleColor;
-        _info.color = s.TitleColor;
+        _gameMode.color = s.UiColor;
+        _info.color = s.UiColor;
     }
 }

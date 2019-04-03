@@ -464,8 +464,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 735039388}
-  - component: {fileID: 735039389}
   - component: {fileID: 735039390}
+  - component: {fileID: 735039389}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged

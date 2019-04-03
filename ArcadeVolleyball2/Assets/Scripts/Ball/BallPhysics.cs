@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using JetBrains.Annotations;
+using UnityEngine;
 
 namespace Ball
 {
@@ -15,9 +17,8 @@ namespace Ball
         private void Start()
         {
             _rb2D = GetComponent<Rigidbody2D>();
-        
-            _acceleration = Loader.i.mode.ballAcceleration * Time.fixedDeltaTime * .1f;
-            _gravity = -Loader.i.mode.ballGravity * Time.fixedDeltaTime * .01f;
+            _acceleration = GameCalculator.BallAcceleration();
+            _gravity = GameCalculator.BallGravity();
         }
 
         private void FixedUpdate()
@@ -37,15 +38,11 @@ namespace Ball
             _waiting = true;
         }
 
-        // ReSharper disable once UnusedParameter.Local
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnCollisionEnter2D([NotNull] Collision2D other)
         {
+            if (!_waiting) return;
+            if (other == null) throw new ArgumentNullException(nameof(other));
             _waiting = false;
-        }
-
-        public string DebugInfo()
-        {
-            return $"Speed: {_ballSpeed:F}";
         }
     }
 }

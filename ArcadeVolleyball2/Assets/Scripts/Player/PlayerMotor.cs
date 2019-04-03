@@ -3,7 +3,7 @@ using Ball;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMotor : MonoBehaviour, IReset
+public class PlayerMotor : MonoBehaviour
 {
 	
 	public bool IsGrounded { get; private set; }
@@ -27,12 +27,12 @@ public class PlayerMotor : MonoBehaviour, IReset
 		_startPosition = 
 			new Vector2(transform.position.x,Loader.i.settings.GroundLevel);
 		
-		ResetForNewRound();
-		
 		transform.localScale = transform.localScale * Loader.i.mode.CharacterSize;
 
 		if (transform.position.x > 0f)
 			transform.rotation = Quaternion.Euler(new Vector3(0,180));
+		
+		GameManager.i.OnNewRound.AddListener(Init);
 	}
 
 	private void FixedUpdate () 
@@ -82,13 +82,12 @@ public class PlayerMotor : MonoBehaviour, IReset
 		return _move != 0f;
 	}
 
-	public void ResetForNewRound()
+	private void Init()
 	{
+		_jump = false;
+		_jumpAxis = 0;
+		_move = 0;
 		transform.position = _startPosition;
 	}
 
-	public void ResetForNewGame()
-	{
-		ResetForNewRound();
-	}
 }

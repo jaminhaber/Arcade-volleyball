@@ -6,7 +6,6 @@ using UnityEngine;
         
         private static bool last;
 
-        
         public static Vector2 ServePosition(bool P1)
         {
             return new Vector2(P1?-6:6,
@@ -14,8 +13,6 @@ using UnityEngine;
                 +2*Loader.i.mode.CharacterSize
                 -Loader.i.mode.PlayerJumpSpeed/Physics2D.gravity.y);
         }
-
-
 
         public static Func<State, State, bool> ServeFunction(ServeMode serve)
         {
@@ -30,6 +27,16 @@ using UnityEngine;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(serve), serve, null);
             }
+        }
+
+        public static float BallAcceleration()
+        {
+            return Loader.i.mode.ballAcceleration * Time.fixedDeltaTime * .1f;
+        }
+
+        public static float BallGravity()
+        {
+            return -Loader.i.mode.ballGravity * Time.fixedDeltaTime * .01f;
         }
         
 
