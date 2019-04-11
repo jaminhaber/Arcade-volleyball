@@ -1,6 +1,8 @@
-#Goal
-Remake the classic game in unity and add new features 
+# Arcade Volleyball
 
-#Controls
+A remake of a classic arcade game using Unity. 
+
+## Controls
+
 Player 1 use WASD
-Player 2 use Arrow Keys
+Player 2 use Arrow keys
