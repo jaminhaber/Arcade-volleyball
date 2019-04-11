@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,7 @@ public class Loader : MonoBehaviour
         loadingScreen.alpha = 0;
 
         if (SceneManager.sceneCount == 1) SceneManager.LoadScene("Menu",LoadSceneMode.Additive);
+        DOTween.Init();
     }
 
     public void LoadGame()

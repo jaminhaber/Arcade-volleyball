@@ -1,93 +1,93 @@
 ﻿using System.Collections;
-using Ball;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMotor : MonoBehaviour
 {
-	
-	public bool IsGrounded { get; private set; }
-	
-	private float _move;
-	private float _jumpAxis;
-	private bool _jump;
-	private Rigidbody2D _rb2D;
+    public bool IsGrounded { get; private set; }
 
-	private readonly float _groundLevel = Loader.i.settings.GroundLevel;
-	private readonly float _moveSpeed = Loader.i.mode.PlayerSpeed; 
-	private readonly float _jumpSpeed = Loader.i.mode.PlayerJumpSpeed;
+    private float _move;
+    private float _jumpAxis;
+    private bool _jump;
+    private Rigidbody2D _rb2D;
 
-	private Vector2 _startPosition; 
-	
-	private void Start ()
-	{
-		_rb2D = GetComponent<Rigidbody2D>();
-		IsGrounded = true;
-		
-		_startPosition = 
-			new Vector2(transform.position.x,Loader.i.settings.GroundLevel);
-		
-		transform.localScale = transform.localScale * Loader.i.mode.CharacterSize;
+    private float _groundLevel;
+    private float _moveSpeed;
+    private float _jumpSpeed;
 
-		if (transform.position.x > 0f)
-			transform.rotation = Quaternion.Euler(new Vector3(0,180));
-		
-		GameManager.i.OnNewRound.AddListener(Init);
-	}
+    private Vector2 _startPosition;
 
-	private void FixedUpdate () 
-	{
-		_jumpAxis = _rb2D.velocity.y;
+    private void Awake()
+    {
+        IsGrounded = true;
+        _groundLevel = Loader.i.settings.GroundLevel;
+        _moveSpeed = Loader.i.mode.PlayerSpeed;
+        _jumpSpeed = Loader.i.mode.PlayerJumpSpeed;
+        _startPosition = new Vector2(transform.position.x, _groundLevel);
+        transform.localScale = transform.localScale * Loader.i.mode.CharacterSize;
 
-		if (_jump)
-		{
-			_jumpAxis = _jumpSpeed;
-			_jump = false;
-		}
-		
-		_rb2D.velocity = new Vector2(_move * _moveSpeed, _jumpAxis);
+        _rb2D = GetComponent<Rigidbody2D>();
 
-	}
+        if (transform.position.x > 0f)
+            transform.rotation = Quaternion.Euler(new Vector3(0, 180));
+    }
 
-	public void Move(float input)
-	{
-		_move = Mathf.Clamp(input,-1,1);
-	}
-	
-	public void Jump()
-	{
-		if (!Grounded()) return;
-		_jump = true;
-		StartCoroutine(JumpRoutine());
-	}
+    private void Start()
+    {
+        GameManager.i.OnNewRound.AddListener(Init);
+    }
 
-	private IEnumerator JumpRoutine()
-	{
-		IsGrounded = false;
-		
-		yield return new WaitUntil(() => _jumpAxis < 0);
-		yield return new WaitUntil(Grounded);
+    private void FixedUpdate()
+    {
+        _jumpAxis = _rb2D.velocity.y;
 
-		IsGrounded = true;
+        if (_jump)
+        {
+            _jumpAxis = _jumpSpeed;
+            _jump = false;
+        }
 
-	}
-	
-	private bool Grounded()
-	{
-		return transform.position.y <= _groundLevel;
-	}
-	
-	public bool Walking()
-	{
-		return _move != 0f;
-	}
+        _rb2D.velocity = new Vector2(_move * _moveSpeed, _jumpAxis);
+    }
 
-	private void Init()
-	{
-		_jump = false;
-		_jumpAxis = 0;
-		_move = 0;
-		transform.position = _startPosition;
-	}
+    public void Move(float input)
+    {
+        _move = Mathf.Clamp(input, -1, 1);
+    }
+
+    public void Jump()
+    {
+        if (!Grounded()) return;
+        _jump = true;
+        StartCoroutine(JumpRoutine());
+    }
+
+    private IEnumerator JumpRoutine()
+    {
+        IsGrounded = false;
+
+        yield return new WaitUntil(() => _jumpAxis < 0);
+        yield return new WaitUntil(Grounded);
+
+        IsGrounded = true;
+    }
+
+    private bool Grounded()
+    {
+        return transform.position.y <= _groundLevel;
+    }
+
+    public bool Walking()
+    {
+        return _move != 0f;
+    }
+
+    private void Init()
+    {
+        _jump = false;
+        _jumpAxis = 0;
+        _move = 0;
+        transform.position = _startPosition;
+    }
 
 }

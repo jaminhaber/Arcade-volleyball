@@ -268,7 +268,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: {fileID: 11400000, guid: 9e82c586935a84699be56907f5cba116, type: 2}
   settings: {fileID: 11400000, guid: 0630a344548584a9ba6b7240fda4e3ba, type: 2}
-  background: 0
   loadingScreen: {fileID: 320706177}
   loadTime: 1
 --- !u!4 &624088822

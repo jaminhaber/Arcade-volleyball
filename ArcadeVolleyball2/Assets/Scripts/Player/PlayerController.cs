@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 	private string _jumpAxis = "Vertical";
 	private Vector3 _defaultPosition;
 	
-	private void Start ()
+	private void Awake ()
 	{
 		_motor = GetComponent<PlayerMotor>();
 		_moveAxis = transform.position.x < 0 ? "P1Move" : "P2Move";

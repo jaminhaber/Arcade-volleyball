@@ -10,17 +10,18 @@ namespace Ball
         private float _ballSpeed;
         private bool _waiting;
 
-        private readonly float _speed = Loader.i.mode.BallSpeed;
+        private float _speed;
         private float _acceleration;
         private float _gravity;
 
-        private void Start()
+        private void Awake()
         {
+            _speed = Loader.i.mode.BallSpeed;
             _rb2D = GetComponent<Rigidbody2D>();
             _acceleration = GameCalculator.BallAcceleration();
             _gravity = GameCalculator.BallGravity();
         }
-
+        
         private void FixedUpdate()
         {
             if (_waiting) return;
@@ -44,5 +45,6 @@ namespace Ball
             if (other == null) throw new ArgumentNullException(nameof(other));
             _waiting = false;
         }
+
     }
 }

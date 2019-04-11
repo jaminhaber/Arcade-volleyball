@@ -10,14 +10,19 @@ namespace Ball
         private Func<State, State, bool> _serveFunc;
         private bool _nextServe;
 
-        private readonly int _winScore = Loader.i.mode.winScore;
-        
-        private void Start()
+        private int _winScore;
+
+
+        private void Awake()
         {
+            _winScore = Loader.i.mode.winScore;
             _ball = GetComponent<BallPhysics>();
             _serveFunc = GameCalculator.ServeFunction(Loader.i.mode.serveMode);
             _nextServe = _serveFunc(new State(),GameManager.i.GameState.CurrentState );
+        }
 
+        private void Start()
+        {
             GameManager.i.GameState.OnStateChange.AddListener(OnStateChange);
             GameManager.i.OnNewRound.AddListener(Init);
         }
